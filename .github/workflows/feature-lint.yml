@@ -1,0 +1,16 @@
+name: Feature lint
+on:
+  pull_request:
+    paths: ['features/**']
+permissions:
+  contents: read
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fail if a .feature file has no scenarios
+        run: |
+          for f in $(find features -name '*.feature'); do
+            grep -qE '^\s*(เหตุการณ์|Scenario)' "$f" || { echo "No scenario in $f"; exit 1; }
+          done

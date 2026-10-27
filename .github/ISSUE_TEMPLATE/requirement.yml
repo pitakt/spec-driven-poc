@@ -1,0 +1,32 @@
+name: Business Requirement
+description: PO writes the requirement in business language
+labels: [requirement]
+body:
+  - type: input
+    id: req-id
+    attributes:
+      label: Requirement ID
+      placeholder: REQ-101
+    validations:
+      required: true
+  - type: textarea
+    id: business-need
+    attributes:
+      label: Business need
+    validations:
+      required: true
+  - type: textarea
+    id: rules
+    attributes:
+      label: Rules / conditions that must hold
+  - type: checkboxes
+    id: definition-of-ready
+    attributes:
+      label: Definition of Ready
+      description: PO ticks all items before moving the card to Ready.
+      options:
+        - label: Requirement ID is filled in
+        - label: Business need says who does what and why
+        - label: Each rule is testable (true or false), one topic per rule
+        - label: Out of scope is listed
+        - label: No open questions in the comments
